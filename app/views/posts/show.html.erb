@@ -1,0 +1,22 @@
+<h1><%= @post.title %></h1>
+
+<p><strong>Author: </strong> <%= link_to @post.blogger.name, blogger_path(@post.blogger) %></p>
+<p><strong>Destination: </strong> <%= link_to @post.destination.name, destination_path(@post.destination) %></p>
+<p><strong>Likes: </strong> <%= @post.likes %></p>
+
+<% if JSON::ParserError %>
+	<p><%= @post.content %></p>
+<% else %>
+	<% @post.content_parse.each do |paragraph| %>
+		<p><%= paragraph %></p>
+	<% end %>
+<% end %>
+
+<%= button_to "Like", add_like_path %>
+
+<!--
+Users should be able to see a post's page with its title and content displayed. On this page, a user should see:
+	- A link to the page of that post's author
+	- A link to the page of that post's destination
+	- A like button link that increases the like count for that post (should take the user to the same page)
+-->

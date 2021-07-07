@@ -1,0 +1,25 @@
+<h1>Destination Profile</h1>
+
+<h4>Name:</h4><%= @destination.name %>
+<h4>Country:</h4><%= @destination.country %>
+<hr>
+<h4>Most recent posts about <%= @destination.name %></h4>
+<ul>
+    <% @destination.five_most_recent_posts.each do |post| %>
+        <li><%= link_to post.title, post_path(post) %></li>
+    <% end %>
+</ul>
+<h4>Featured Post:</h4>
+<% if @destination.featured_post %>
+    <%= link_to @destination.featured_post.title, destination_path(@destination.featured_post) %>
+<% else %>
+    <p>No posts yet!</p>
+<% end %>
+<h4>Average age of bloggers who've written about <%= @destination.name %>:</h4>
+<%= @destination.bloggers_avg_age %>
+<!-- 
+1. Users should be able to see a destination profile page. On this page, a user should see:
+	- The most recent 5 posts written about this destination
+	- A link to a featured post (this destination's post with the most likes)
+	- The average age of all unique bloggers who have written about this destination.
+-->

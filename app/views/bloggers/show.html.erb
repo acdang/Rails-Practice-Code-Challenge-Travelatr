@@ -1,0 +1,21 @@
+<h1>Blogger Profile</h1>
+
+<h4>Name: </h4><%= @blogger.name %>
+<h4>Age: </h4><%= @blogger.age %>
+<h4>Bio: </h4><%= @blogger.bio %>
+<hr>
+<h4>Total likes on all posts: </h5><%= @blogger.total_likes %></h4>
+<h4>Featured Post: </h4>
+<% if @blogger.featured_post %>
+    <%= link_to @blogger.featured_post.title, post_path(@blogger.featured_post) %>
+<% else %>
+    <p>No posts yet!<p>
+<% end %>
+
+<p>**BONUS** A list of that user's top 5 most written about destinations (the destinations with the most posts)</p>
+<!-- 
+On this page, a user should see:
+	- The total likes on all of that blogger's posts
+	- A link to that blogger's featured post (the post with the most likes)
+	- **BONUS** A list of that user's top 5 most written about destinations (the destinations with the most posts)
+-->
